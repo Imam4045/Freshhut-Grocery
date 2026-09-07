@@ -165,19 +165,17 @@ The live demo comes pre-seeded with these accounts so you can try both roles rig
 | Admin | `admin@freshhut.com` | `FreshHut_Admin_2026!` |
 | Customer | `customer@test.com` | `customer123` |
 
-## Team
+---
 
-Built for the "Mini Project: Online Grocery Store" coursework, Department of Computer Science & Engineering.
+## 🤝 Contributing
 
-| Name | ID |
-|---|---|
-| Md. Imam Hasan | 2023-1-60-030 |
-| Md. Abdulla Hasan | 2023-1-60-034 |
-| Tabassum Talukder | 2023-1-60-039 |
-
-Supervised by **Nahid Hasan**, Lecturer, Dept. of CSE.
+If you have any suggestions or want to improve the project, feel free to fork it, make your changes and submit a pull request.
 
 ---
 
-<p align="center">Made with 🥦 by the FreshHut team</p>
+## 🔒 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+---
  
