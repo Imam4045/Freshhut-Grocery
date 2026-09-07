@@ -63,15 +63,15 @@ The frontend is built with plain HTML, CSS, and vanilla JavaScript (no framework
 
 <table>
   <tr>
-    <td align="center"><b>Create Account</b><br><img src="docs/screenshots/register.png" width="400"></td>
-    <td align="center"><b>Shopping Cart</b><br><img src="docs/screenshots/cart.png" width="400"></td>
+    <td align="center"><b>Create Account</b><br><img src="screenshots/register.png" width="400"></td>
+    <td align="center"><b>Shopping Cart</b><br><img src="screenshots/cart.png" width="400"></td>
   </tr>
   <tr>
-    <td align="center"><b>Order Tracking</b><br><img src="docs/screenshots/order-tracking.png" width="400"></td>
-    <td align="center"><b>Admin Dashboard</b><br><img src="docs/screenshots/admin-dashboard.png" width="400"></td>
+    <td align="center"><b>Order Tracking</b><br><img src="screenshots/order-tracking.png" width="400"></td>
+    <td align="center"><b>Admin Dashboard</b><br><img src="screenshots/admin-dashboard.png" width="400"></td>
   </tr>
   <tr>
-    <td align="center" colspan="2"><b>Admin — Manage Products</b><br><img src="docs/screenshots/admin-manage-products.png" width="500"></td>
+    <td align="center" colspan="2"><b>Admin — Manage Products</b><br><img src="screenshots/admin-manage-products.png" width="500"></td>
   </tr>
 </table>
 
