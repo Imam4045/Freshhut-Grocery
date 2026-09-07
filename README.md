@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/screenshots/homepage.png" alt="FreshHut Homepage" width="100%">
+  <img src="screenshots/homepage.png" alt="FreshHut Homepage" width="100%">
 </div>
 
 <h1 align="center">🛒 FreshHut — Online Grocery Store</h1>
