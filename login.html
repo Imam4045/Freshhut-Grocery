@@ -502,43 +502,6 @@
     </div>
 </div>
 
-<script>
-const API = 'api';
-async function doLogin() {
-    const email    = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const msg      = document.getElementById('msg');
-    const btn      = document.getElementById('login-btn');
-    if (!email || !password) {
-        msg.innerHTML = '<div class="alert alert-danger">Please enter your email and password.</div>';
-        return;
-    }
-    btn.textContent = 'Signing in...';
-    btn.disabled = true;
-    try {
-        const res  = await fetch(`${API}/login.php`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email,password}) });
-        const data = await res.json();
-        if (data.status === 'success') {
-            localStorage.setItem('user', JSON.stringify(data.user));
-            if (data.user.role === 'admin') {
-                window.location.href = 'admin/index.html';
-            } else {
-                const redirect = sessionStorage.getItem('redirect_after_login') || 'index.html';
-                sessionStorage.removeItem('redirect_after_login');
-                window.location.href = redirect;
-            }
-        } else {
-            msg.innerHTML = `<div class="alert alert-danger">${data.message || 'Invalid credentials.'}</div>`;
-            btn.textContent = 'Sign In';
-            btn.disabled = false;
-        }
-    } catch(e) {
-        msg.innerHTML = '<div class="alert alert-danger">Connection error. Is the server running?</div>';
-        btn.textContent = 'Sign In';
-        btn.disabled = false;
-    }
-}
-document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-</script>
+<script src="js/auth.js"></script>
 </body>
 </html>
