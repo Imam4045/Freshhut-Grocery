@@ -26,6 +26,12 @@
 - [Environment Variables](#environment-variables)
 - [Demo Accounts](#demo-accounts)
 - [Team](#team)
+- [Key Features](#key-features)
+- [Order Status](#order-status)
+- [Application Flow](#application-flow)
+- [Authentication and Security](#authentication-and-security)
+- [Local Setup](#local-setup)
+- [Deployment](#deployment)
 
 <h2 id="live-demo" align="center">Live Demo</h2>
 
@@ -110,12 +116,14 @@ Grocery-Store1/
 
 The schema is created and seeded automatically on first run (see `config/db.php`) — no manual SQL import needed.
 
-- **users** — customers & admins, with hashed passwords and roles
-- **categories** — 8 product categories (Vegetables, Fruits, Dairy, Bakery, Beverages, Snacks, Meats, Health & Organic)
-- **products** — 24 seeded products linked to categories
-- **cart** — per-user cart items
-- **orders** — order records with status, payment method, and delivery address
-- **order_items** — line items for each order
+| Table | Purpose |
+|---|---|
+| `users` | Customer/admin accounts, contact information, roles, and authentication data |
+| `categories` | Grocery category definitions (8 categories: Vegetables, Fruits, Dairy, Bakery, Beverages, Snacks, Meats, Health & Organic) |
+| `products` | Product name, category, price, stock, description, and image (24 seeded products) |
+| `cart` | Current items selected by each customer |
+| `orders` | Order-level information including address, payment method, total, and status |
+| `order_items` | Products, quantities, and prices stored for each order |
 
 Foreign keys enforce relational integrity across cart, orders, and order_items.
 
@@ -165,6 +173,150 @@ The live demo comes pre-seeded with these accounts so you can try both roles rig
 | Admin | `admin@freshhut.com` | `FreshHut_Admin_2026!` |
 | Customer | `customer@test.com` | `customer123` |
 
+## Key Features
+### 👤 Customer Features
+
+* User registration and login
+* Customer/admin role separation
+* Product browsing by category
+* Product search and filtering
+* Featured products and promotional hero slider
+* Product detail pages with price, stock, description, and image
+* Shopping cart with quantity updates and item removal
+* Checkout with delivery address
+* Payment options: Cash on Delivery, bKash, Nagad, and Rocket
+* Order tracking with a visual status timeline
+* Profile management and order history
+
+### 🛠️ Admin Features
+
+* Dashboard with order, product, pending-order, and revenue statistics
+* Add, edit, and delete products
+* Update price, stock, category, and description
+* Upload product images
+* View and manage customer orders
+* Update order status or cancel orders
+* View registered users
+* Change user roles
+* Delete user accounts when required
+
+## Order Status
+
+```
+Pending → Confirmed → Processing → Out for Delivery → Delivered
+```
+
+Cancelled orders are handled as a separate final state.
+
+## Application Flow
+### Customer Flow
+
+```
+Register / Login
+       │
+       ▼
+Browse Products
+       │
+       ├── Search
+       └── Filter by Category
+       │
+       ▼
+Add to Cart
+       │
+       ▼
+Checkout
+       │
+       ├── Delivery Address
+       └── Payment Method
+       │
+       ▼
+Place Order
+       │
+       ▼
+Pending
+  ↓
+Confirmed
+  ↓
+Processing
+  ↓
+Out for Delivery
+  ↓
+Delivered
+```
+
+### Admin Flow
+
+```
+Admin Login
+    │
+    ▼
+Admin Dashboard
+    ├── Manage Products
+    ├── Manage Orders
+    └── Manage Users
+```
+
+## Authentication and Security
+
+* Passwords are hashed with PHP's password-hashing functions.
+* PHP sessions are used for authenticated requests.
+* Session cookies are configured with secure cookie attributes.
+* Customers can access only their own order information.
+* Admin API operations perform server-side role checks.
+* Cart and checkout operations validate product availability and stock.
+* Prepared SQL statements are used for database operations.
+* Checkout uses a database transaction to keep stock, order, and cart updates consistent.
+* Database credentials are intended to be supplied through environment variables for deployment.
+* MySQL SSL can be enabled using the included CA certificate.
+
+Security: Never publish real database passwords or private credentials in a public GitHub repository. Replace any development credentials before using the project publicly.
+
+## Local Setup
+1. Clone the repository
+
+```
+git clone https://github.com/<your-username>/<your-repository>.git
+cd Grocery-Store1
+```
+
+2. Configure MySQL
+Create a MySQL database and import `config/grocery_store.sql`, or use the project's database setup logic with a MySQL account that has the required permissions.
+3. Set database environment variables
+
+```
+DB_HOST=your-db-host
+DB_PORT=your-db-port
+DB_NAME=your-db-name
+DB_USER=your-db-user
+DB_PASS=your-db-password
+```
+
+4. Run with Docker
+
+```
+docker build -t freshhut .
+docker run -p 8080:8080 \
+  -e DB_HOST="your-db-host" \
+  -e DB_PORT="your-db-port" \
+  -e DB_NAME="your-db-name" \
+  -e DB_USER="your-db-user" \
+  -e DB_PASS="your-db-password" \
+  freshhut
+```
+
+For a normal PHP/Apache setup, place the project in your web server's document root and open it through the local server.
+
+## Deployment
+The project includes a Docker-based configuration for Render:
+
+1. Render builds the application from the `Dockerfile`.
+2. PHP 8.2 with Apache is used as the web runtime.
+3. MySQL-related PHP extensions are installed in the container.
+4. Apache rewrite and compression support are enabled.
+5. `entrypoint.sh` configures Apache to use the port supplied by Render.
+6. Database connection values are supplied through environment variables.
+7. The application can connect to the remote MySQL database over SSL using the CA certificate.
+
 ---
 
 ## 🤝 Contributing
@@ -178,4 +330,3 @@ If you have any suggestions or want to improve the project, feel free to fork it
 This project is licensed under the [MIT License](./LICENSE).
 
 ---
- 
