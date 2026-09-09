@@ -33,6 +33,9 @@
 - [Environment Variables](#environment-variables)
 - [Authentication and Security](#authentication-and-security)
 - [Demo Accounts](#demo-accounts)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact](#-contact)
 
 <h2 id="live-demo" align="center">Live Demo</h2> <div align="center"> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=2E7D32&center=true&vCenter=true&width=500&height=30&lines=%F0%9F%8C%90+Click+below+to+visit+FreshHut;Live+and+ready+to+explore!" alt="Typing SVG" /> <br/> <a href="https://freshhut-grocery.onrender.com/"> <img src="https://img.shields.io/badge/_LIVE_DEMO-Visit_FreshHut-2e7d32?style=for-the-badge&logo=render&logoColor=white&labelColor=1b5e20" alt="Live Demo"> </a> </div> <p align="center"> <sub>⏳ <b>Note:</b> This demo runs on Render's free tier. If it's been idle, the server needs a moment to wake up first load may take 30–50 seconds. Thanks for your patience!</sub> </p>
 
@@ -282,3 +285,7 @@ If you have any suggestions or want to improve the project, feel free to fork it
 This project is licensed under the [MIT License](./LICENSE).
 
 ---
+
+## 📧 Contact
+
+If you have any questions or concerns, please don't hesitate to contact me via email at imam220826@gmail.com
