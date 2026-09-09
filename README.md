@@ -12,14 +12,6 @@
   </i>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP">
-  <img src="https://img.shields.io/badge/MySQL-Aiven-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL">
-  <img src="https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Docker-Apache-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/Deployed%20on-Render-46E3B7?style=flat-square&logo=render&logoColor=white" alt="Render">
-</p>
-
 ## Table of Contents
 
 - [Live Demo](#live-demo)
@@ -77,7 +69,7 @@
 |---|---|---|
 | Frontend | HTML5 | Markup and page structure |
 | Styling | CSS3 | Responsive layout, cards, and admin UI styling |
-| Client-side | Vanilla JavaScript | Fetch API calls, search/filtering, cart, checkout, and tracking logic |
+| Client-side | JavaScript | Fetch API calls, search/filtering, cart, checkout, and tracking logic |
 | Backend | PHP 8.2 | Session-based auth, REST-style endpoints, and business logic |
 | Database | MySQL | Stores users, categories, products, cart, and order data |
 | API Communication | Fetch API / JSON | Connects the frontend to the PHP backend |
