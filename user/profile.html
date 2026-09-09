@@ -379,21 +379,30 @@
         .up-shop-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+
             background: linear-gradient(135deg, #6CB023, #8ed62e);
             color: #fff;
+
             padding: 11px 26px;
             border-radius: 10px;
+
             font-weight: 800;
             font-size: 14px;
+            line-height: 1;
+
             box-shadow: 0 4px 14px rgba(108,176,35,.35);
             transition: all .22s cubic-bezier(.22,.68,0,1.2);
         }
 
         .up-shop-btn svg {
-            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
             display: block;
-            transform: translateY(1px);
+            flex: 0 0 14px;
+            position: relative;
+            top: 1px;
         }
 
         .up-shop-btn:hover {
