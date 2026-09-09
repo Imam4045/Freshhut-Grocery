@@ -29,7 +29,7 @@
 - [Project Structure](#project-structure)
 - [Database Schema](#database-schema)
 - [Application Flow](#application-flow)
-- [Getting Started](#getting-started)
+- [Local Setup](#local-setup)
 - [Environment Variables](#environment-variables)
 - [Authentication and Security](#authentication-and-security)
 - [Demo Accounts](#demo-accounts)
@@ -204,10 +204,10 @@ Admin Dashboard
     └── Manage Users
 ```
 
-## Getting Started
+## Local Setup
 
 ### Prerequisites
-- [XAMPP](https://www.apachefriends.org/) installed (includes PHP + MySQL + Apache), or Docker
+- [XAMPP](https://www.apachefriends.org/) installed (includes PHP + MySQL + Apache)
 
 ### Run Locally with XAMPP
 
