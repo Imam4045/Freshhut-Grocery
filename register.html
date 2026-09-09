@@ -593,48 +593,6 @@
     </div>
 </div>
 
-<script>
-const API = 'api';
-async function doRegister() {
-    const name     = document.getElementById('name').value.trim();
-    const email    = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const phone    = document.getElementById('phone').value.trim();
-    const address  = document.getElementById('address').value.trim();
-    const msg      = document.getElementById('msg');
-    const btn      = document.getElementById('reg-btn');
-
-    if (!name || !email || !password) {
-        msg.innerHTML = '<div class="alert alert-danger">Name, email and password are required.</div>';
-        return;
-    }
-    if (password.length < 6) {
-        msg.innerHTML = '<div class="alert alert-danger">Password must be at least 6 characters.</div>';
-        return;
-    }
-
-    btn.textContent = 'Creating account...';
-    btn.disabled = true;
-
-    try {
-        const res  = await fetch(`${API}/register.php`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,email,password,phone,address}) });
-        const data = await res.json();
-        if (data.status === 'success') {
-            msg.innerHTML = '<div class="alert alert-success">Account created! <a href="login.html">Sign in now</a></div>';
-            btn.textContent = 'Create Account';
-            btn.disabled = false;
-        } else {
-            msg.innerHTML = `<div class="alert alert-danger">${data.message || 'Registration failed.'}</div>`;
-            btn.textContent = 'Create Account';
-            btn.disabled = false;
-        }
-    } catch(e) {
-        msg.innerHTML = '<div class="alert alert-danger">Connection error. Is the server running?</div>';
-        btn.textContent = 'Create Account';
-        btn.disabled = false;
-    }
-}
-document.addEventListener('keydown', e => { if (e.key === 'Enter') doRegister(); });
-</script>
+<script src="js/auth.js"></script>
 </body>
 </html>
