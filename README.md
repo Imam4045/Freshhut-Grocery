@@ -2,8 +2,15 @@
   <img src="screenshots/homepage.png" alt="FreshHut Homepage" width="100%">
 </div>
 
-<h1 align="center">🛒 FreshHut — Online Grocery Store</h1>
-<p align="center"><i>Farm to Your Door — a full-stack grocery shopping platform built with PHP, MySQL, JavaScript &amp; HTML/CSS</i></p>
+<h1 align="center">🛒 FreshHut - Online Grocery Store</h1>
+<p align="center">
+  <i>
+    <b>Farm to Your Door - a modern online grocery shopping platform</b><br>
+    Built to make everyday grocery shopping <b>simple, convenient, and accessible</b>.<br>
+    Browse fresh products, manage your cart, place orders, and track deliveries with ease.<br>
+    A complete digital grocery experience designed for modern shoppers.
+  </i>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP">
@@ -16,38 +23,18 @@
 ## Table of Contents
 
 - [Live Demo](#live-demo)
-- [Overview](#overview)
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Database Schema](#database-schema)
+- [Application Flow](#application-flow)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
-- [Demo Accounts](#demo-accounts)
-- [Team](#team)
-- [Key Features](#key-features)
-- [Order Status](#order-status)
-- [Application Flow](#application-flow)
 - [Authentication and Security](#authentication-and-security)
-- [Local Setup](#local-setup)
-- [Deployment](#deployment)
+- [Demo Accounts](#demo-accounts)
 
-<h2 id="live-demo" align="center">Live Demo</h2>
-
-<div align="center">
-  <a href="https://freshhut-grocery.onrender.com/">
-    <img src="https://img.shields.io/badge/🌐_Live-Visit_FreshHut-2e7d32?style=for-the-badge" alt="Live Demo">
-  </a>
-</div>
-
-> ⏳ Hosted on Render's free tier — the server sleeps when idle, so the first load after inactivity can take 30–50 seconds to spin up.
-
-## Overview
-
-FreshHut is a web-based online grocery store built as a mini project for the Department of Computer Science & Engineering. It gives customers a complete shopping experience — browsing products by category, managing a cart, checking out with a choice of payment methods, and tracking orders in real time — while giving administrators a full panel to manage products, orders, and users.
-
-The frontend is built with plain HTML, CSS, and vanilla JavaScript (no frameworks), and talks to a PHP REST-style API backed by a MySQL database. The whole thing is containerized with Docker and deployed on Render, with the database hosted on Aiven.
+<h2 id="live-demo" align="center">Live Demo</h2> <div align="center"> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=2E7D32&center=true&vCenter=true&width=500&height=30&lines=%F0%9F%8C%90+Click+below+to+visit+FreshHut;Live+and+ready+to+explore!" alt="Typing SVG" /> <br/> <a href="https://freshhut-grocery.onrender.com/"> <img src="https://img.shields.io/badge/_LIVE_DEMO-Visit_FreshHut-2e7d32?style=for-the-badge&logo=render&logoColor=white&labelColor=1b5e20" alt="Live Demo"> </a> </div> <p align="center"> <sub>⏳ <b>Note:</b> This demo runs on Render's free tier. If it's been idle, the server needs a moment to wake up first load may take 30–50 seconds. Thanks for your patience!</sub> </p>
 
 ## Features
 
@@ -55,15 +42,15 @@ The frontend is built with plain HTML, CSS, and vanilla JavaScript (no framework
 - 🔐 Registration & login with PHP session-based authentication
 - 🛍️ Product catalog with category filters, live search, and a featured products section
 - 🛒 Shopping cart with quantity controls and stock validation
-- 💳 Checkout with 4 payment options — Cash on Delivery, bKash, Nagad, Rocket
+- 💳 Checkout with 4 payment options: Cash on Delivery, bKash, Nagad, Rocket
 - 📦 Real-time order tracking with a visual status timeline (`Pending → Confirmed → Processing → Out for Delivery → Delivered`)
 - 👤 Profile panel to update personal info and view order history
 
 **For Admins**
 - 📊 Dashboard with total orders, revenue, product count, and low-stock alerts
-- 🥕 Product management — add, edit, delete products with image uploads
-- 📋 Order management — view full order details and update status
-- 👥 User management — view customers, change roles, delete accounts
+- 🥕 Product management: add, edit, delete products with image uploads
+- 📋 Order management: view full order details and update status
+- 👥 User management: view customers, change roles, delete accounts
 
 ## Screenshots
 
@@ -83,38 +70,80 @@ The frontend is built with plain HTML, CSS, and vanilla JavaScript (no framework
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | HTML5, CSS3, Vanilla JavaScript (Fetch API) |
-| Backend | PHP 8.2 (procedural REST-style API) |
-| Database | MySQL (hosted on Aiven, SSL-secured connection) |
-| Auth | PHP sessions + hashed passwords, with "remember me" via secure tokens |
-| Web Server | Apache (via `php:8.2-apache` Docker image) |
-| Deployment | Docker container on Render |
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | HTML5 | Markup and page structure |
+| Styling | CSS3 | Responsive layout, cards, and admin UI styling |
+| Client-side | Vanilla JavaScript | Fetch API calls, search/filtering, cart, checkout, and tracking logic |
+| Backend | PHP 8.2 | Session-based auth, REST-style endpoints, and business logic |
+| Database | MySQL | Stores users, categories, products, cart, and order data |
+| API Communication | Fetch API / JSON | Connects the frontend to the PHP backend |
+| Web Server | Apache | Serves the PHP application (`php:8.2-apache`) |
+| Containerization | Docker | Packages the app for consistent deployment |
+| Hosting | Render | Runs the live, containerized application |
+| Database Service | Aiven (MySQL) | Managed remote database over an SSL connection |
 
 ## Project Structure
 
 ```
 Grocery-Store1/
-├── api/                  # PHP backend endpoints (auth, products, cart, orders, users)
-├── admin/                # Admin panel (dashboard, products, orders, users)
-├── user/                 # Customer profile panel
-├── config/               # Database connection + auto setup, SSL cert
-├── css/                  # Stylesheets
-├── js/                   # Frontend logic (main, auth, cart, checkout, admin)
-├── uploads/products/     # Uploaded product images
-├── index.html            # Homepage
-├── products.html         # Product catalog & search
-├── cart.html / checkout.html
-├── tracking.html         # Order tracking / history
-├── login.html / register.html
+├── admin/
+│   ├── index.html
+│   ├── products.html
+│   ├── orders.html
+│   ├── users.html
+│   └── admin-style.css
+│
+├── api/
+│   ├── auth_check.php
+│   ├── cart.php
+│   ├── login.php
+│   ├── logout.php
+│   ├── orders.php
+│   ├── products.php
+│   ├── register.php
+│   ├── user.php
+│   └── users.php
+│
+├── user/
+│
+├── config/
+│   ├── db.php
+│   ├── ca.pem
+│   └── grocery_store.sql
+│
+├── css/
+│   ├── style.css
+│   └── product-detail.css
+│
+├── js/
+│   ├── admin.js
+│   ├── auth.js
+│   ├── cart.js
+│   ├── checkout.js
+│   ├── main.js
+│   └── product-img.js
+│
+├── uploads/
+│   └── products/
+│
+├── about.html
+├── cart.html
+├── checkout.html
+├── contact.html
+├── index.html
+├── login.html
+├── product-detail.html
+├── products.html
+├── register.html
+├── tracking.html
 ├── Dockerfile
 └── entrypoint.sh
 ```
 
 ## Database Schema
 
-The schema is created and seeded automatically on first run (see `config/db.php`) — no manual SQL import needed.
+The schema is created and seeded automatically on first run (see `config/db.php`) no manual SQL import needed.
 
 | Table | Purpose |
 |---|---|
@@ -126,87 +155,6 @@ The schema is created and seeded automatically on first run (see `config/db.php`
 | `order_items` | Products, quantities, and prices stored for each order |
 
 Foreign keys enforce relational integrity across cart, orders, and order_items.
-
-## Getting Started
-
-### Prerequisites
-- PHP 8.2+ with the `pdo_mysql` extension, or Docker
-- A MySQL database (local via XAMPP, or a hosted instance like Aiven)
-
-### Option A — Run with Docker
-```bash
-git clone <this-repo-url>
-cd Grocery-Store1
-docker build -t freshhut .
-docker run -p 8080:10000 \
-  -e DB_HOST=your_db_host -e DB_USER=your_db_user \
-  -e DB_PASS=your_db_pass -e DB_NAME=your_db_name -e DB_PORT=3306 \
-  freshhut
-```
-Visit `http://localhost:8080`.
-
-### Option B — Run with XAMPP
-1. Copy the `Grocery-Store1` folder into `htdocs/`
-2. Start Apache & MySQL from the XAMPP control panel
-3. Set your local DB credentials as environment variables, or edit the fallback values in `config/db.php`
-4. Visit `http://localhost/Grocery-Store1/`
-
-Tables and seed data (admin user, sample customer, categories, products) are created automatically on the first request.
-
-## Environment Variables
-
-| Variable | Description |
-|---|---|
-| `DB_HOST` | MySQL host |
-| `DB_USER` | MySQL username |
-| `DB_PASS` | MySQL password |
-| `DB_NAME` | Database name |
-| `DB_PORT` | MySQL port |
-| `PORT` | Port Apache listens on (set automatically by Render) |
-
-## Demo Accounts
-
-The live demo comes pre-seeded with these accounts so you can try both roles right away:
-
-| Role | Email | Password |
-|---|---|---|
-| Admin | `admin@freshhut.com` | `FreshHut_Admin_2026!` |
-| Customer | `customer@test.com` | `customer123` |
-
-## Key Features
-### 👤 Customer Features
-
-* User registration and login
-* Customer/admin role separation
-* Product browsing by category
-* Product search and filtering
-* Featured products and promotional hero slider
-* Product detail pages with price, stock, description, and image
-* Shopping cart with quantity updates and item removal
-* Checkout with delivery address
-* Payment options: Cash on Delivery, bKash, Nagad, and Rocket
-* Order tracking with a visual status timeline
-* Profile management and order history
-
-### 🛠️ Admin Features
-
-* Dashboard with order, product, pending-order, and revenue statistics
-* Add, edit, and delete products
-* Update price, stock, category, and description
-* Upload product images
-* View and manage customer orders
-* Update order status or cancel orders
-* View registered users
-* Change user roles
-* Delete user accounts when required
-
-## Order Status
-
-```
-Pending → Confirmed → Processing → Out for Delivery → Delivered
-```
-
-Cancelled orders are handled as a separate final state.
 
 ## Application Flow
 ### Customer Flow
@@ -256,66 +204,70 @@ Admin Dashboard
     └── Manage Users
 ```
 
+## Getting Started
+
+### Prerequisites
+- [XAMPP](https://www.apachefriends.org/) installed (includes PHP + MySQL + Apache), or Docker
+
+### Run Locally with XAMPP
+
+1. **Download and install XAMPP**, then open the XAMPP Control Panel and start **Apache** and **MySQL**.
+
+2. **Clone the repository into your XAMPP `htdocs` folder**
+```bash
+   cd C:/xampp/htdocs        # or /Applications/XAMPP/htdocs on Mac
+   git clone <this-repo-url>
+   cd Grocery-Store1
+```
+
+3. **Create a local database**
+   - Open `http://localhost/phpmyadmin`
+   - Create a new database, e.g. `grocery_store`
+
+4. **Set your database credentials**
+   Open `config/db.php` and update the fallback values to match your local setup (defaults for XAMPP are usually):
+```php
+   DB_HOST = "localhost"
+   DB_USER = "root"
+   DB_PASS = ""              // XAMPP's default MySQL has no password
+   DB_NAME = "grocery_store"
+   DB_PORT = 3306
+```
+
+5. **Finally visit the app**
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `DB_HOST` | MySQL host |
+| `DB_USER` | MySQL username |
+| `DB_PASS` | MySQL password |
+| `DB_NAME` | Database name |
+| `DB_PORT` | MySQL port |
+| `PORT` | Port Apache listens on (set automatically by Render) |
+
 ## Authentication and Security
 
-* Passwords are hashed with PHP's password-hashing functions.
-* PHP sessions are used for authenticated requests.
-* Session cookies are configured with secure cookie attributes.
-* Customers can access only their own order information.
-* Admin API operations perform server-side role checks.
-* Cart and checkout operations validate product availability and stock.
-* Prepared SQL statements are used for database operations.
-* Checkout uses a database transaction to keep stock, order, and cart updates consistent.
-* Database credentials are intended to be supplied through environment variables for deployment.
-* MySQL SSL can be enabled using the included CA certificate.
+* Passwords are securely hashed.
+* PHP sessions keep users logged in securely.
+* Session cookies use secure settings.
+* Users can only view their own orders.
+* Admin actions require proper admin access.
+* Cart and checkout check product stock.
+* Prepared statements help protect database queries.
+* Checkout uses a database transaction to keep orders and stock accurate.
+* Database credentials can be configured with environment variables.
+* MySQL SSL support is available with the included CA certificate.
 
-Security: Never publish real database passwords or private credentials in a public GitHub repository. Replace any development credentials before using the project publicly.
+## Demo Accounts
 
-## Local Setup
-1. Clone the repository
+The live demo comes pre-seeded with these accounts so you can try both roles right away:
 
-```
-git clone https://github.com/<your-username>/<your-repository>.git
-cd Grocery-Store1
-```
-
-2. Configure MySQL
-Create a MySQL database and import `config/grocery_store.sql`, or use the project's database setup logic with a MySQL account that has the required permissions.
-3. Set database environment variables
-
-```
-DB_HOST=your-db-host
-DB_PORT=your-db-port
-DB_NAME=your-db-name
-DB_USER=your-db-user
-DB_PASS=your-db-password
-```
-
-4. Run with Docker
-
-```
-docker build -t freshhut .
-docker run -p 8080:8080 \
-  -e DB_HOST="your-db-host" \
-  -e DB_PORT="your-db-port" \
-  -e DB_NAME="your-db-name" \
-  -e DB_USER="your-db-user" \
-  -e DB_PASS="your-db-password" \
-  freshhut
-```
-
-For a normal PHP/Apache setup, place the project in your web server's document root and open it through the local server.
-
-## Deployment
-The project includes a Docker-based configuration for Render:
-
-1. Render builds the application from the `Dockerfile`.
-2. PHP 8.2 with Apache is used as the web runtime.
-3. MySQL-related PHP extensions are installed in the container.
-4. Apache rewrite and compression support are enabled.
-5. `entrypoint.sh` configures Apache to use the port supplied by Render.
-6. Database connection values are supplied through environment variables.
-7. The application can connect to the remote MySQL database over SSL using the CA certificate.
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@freshhut.com` | `FreshHut_Admin_2026!` |
+| Customer | `customer@test.com` | `customer123` |
 
 ---
 
